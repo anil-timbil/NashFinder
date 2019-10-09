@@ -1,0 +1,13 @@
+3,3 : 0,5 /n
+5,0 : 1,1 /n
+
+After first split
+[ 0,5]
+[5,0 1,1] 
+
+Second split
+3,3
+
+
+
+2 Arrays: 
