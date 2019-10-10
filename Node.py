@@ -1,7 +1,6 @@
 class Node():
-  def __init__(self):
-    self.p1 = null
-    self.p2 = null
+  def __init__(self, values):
+    self.p1, self.p2 = values.split(",")
     ##self.isNash = False
     self.selectP1 = False
     self.selectP2 = False

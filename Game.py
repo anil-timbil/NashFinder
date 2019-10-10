@@ -5,23 +5,62 @@ class Game():
     self.strictDominant = []
     self.weakDominant = []
     self.weakDominated = []
+    self.matrix = []
     inputfile = open(txtfile, "r", encoding="utf-8")
     text = inputfile.read()
     rows = text.split("/n")
     for row in rows:
       nodeList = row.split(" : ")
-      for node in nodeList:
-        = new Node(nodeList[])
+      objectList = []
+      for values in nodeList:
+        objectList.append(Node(values))
+      self.matrix.append(objectList)
+    self.numCol = len(matrix[0])
+    self.numRow = len(matrix)
+    flagPayoff()
+
+  def flagPayoff(self):
+      #Player 1
+      for num2 in range(self.numCol):
+          indexList = []
+          max_val = self.matrix[0][0].getP1()
+          for num in range(self.numRow):
+            new_val = self.matrix[num][num2].getP1()
+            if new_val > max_val:
+              max_val = new_val
+
+          indexList = []
+          for i in range(self.numRow):
+            if self.matrix[i][num2].getP1() == max_val:
+              indexList.append(i)
+
+          for i in indexList:
+            self.matrix[i][num2].setSelectP1(True)
+
+      #Player 2
+      for num in range(self.numRow):
+          indexList = []
+          max_val = self.matrix[0][0].getP2()
+          for num2 in range(self.numCol):
+            new_val = self.matrix[num][num2].getP2()
+            if new_val > max_val:
+              max_val = new_val
+
+          indexList = []
+          for i in range(self.numCol):
+            if self.matrix[num][i].getP2() == max_val:
+              indexList.append(i)
+
+          for i in indexList:
+            self.matrix[num][i].setSelectP2(True)
 
   def findPureNash(self):
-      numCol = len(matrix[0])
-      numRow = len(matrix)
-
-      for num2 in range(numCol):
-          indexList = []
-          for num in range(numRow):
-              
-
+    for num in range(self.numRow):
+      for num2 in range(self.numCol):
+        if self.matrix[num][num2].isNash():
+          p1 = self.matrix[num][num2].getP1()
+          p2 = self.matrix[num][num2].getP2()
+          return num, num2, p1, p2
 
   def findMixedNash(self):
 
