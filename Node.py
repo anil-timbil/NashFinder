@@ -1,5 +1,6 @@
 class Node():
   def __init__(self, values):
+    #print(values.split(","))
     self.p1, self.p2 = values.split(",")
     ##self.isNash = False
     self.selectP1 = False

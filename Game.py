@@ -8,22 +8,23 @@ class Game():
     self.matrix = []
     inputfile = open(txtfile, "r", encoding="utf-8")
     text = inputfile.read()
-    rows = text.split("/n")
+    rows = text.split("\n")
+    #print(rows)
     for row in rows:
       nodeList = row.split(" : ")
       objectList = []
       for values in nodeList:
         objectList.append(Node(values))
       self.matrix.append(objectList)
-    self.numCol = len(matrix[0])
-    self.numRow = len(matrix)
-    flagPayoff()
+    self.numCol = len(self.matrix[0])
+    self.numRow = len(self.matrix)
+    self.flagPayoff()
 
   def flagPayoff(self):
       #Player 1
       for num2 in range(self.numCol):
           indexList = []
-          max_val = self.matrix[0][0].getP1()
+          max_val = self.matrix[0][num2].getP1()
           for num in range(self.numRow):
             new_val = self.matrix[num][num2].getP1()
             if new_val > max_val:
@@ -40,7 +41,7 @@ class Game():
       #Player 2
       for num in range(self.numRow):
           indexList = []
-          max_val = self.matrix[0][0].getP2()
+          max_val = self.matrix[num][0].getP2()
           for num2 in range(self.numCol):
             new_val = self.matrix[num][num2].getP2()
             if new_val > max_val:
@@ -55,19 +56,23 @@ class Game():
             self.matrix[num][i].setSelectP2(True)
 
   def findPureNash(self):
+    nash_list = []
     for num in range(self.numRow):
       for num2 in range(self.numCol):
         if self.matrix[num][num2].isNash():
           p1 = self.matrix[num][num2].getP1()
           p2 = self.matrix[num][num2].getP2()
-          return num, num2, p1, p2
+          nash_list.append([num, num2, p1, p2])
+        #Testing  
+        #print(self.matrix[num][num2].getP1(),self.matrix[num][num2].getP2(), self.matrix[num][num2].getSelectP1(), self.matrix[num][num2].getSelectP2())  
+    return nash_list
 
-  def findMixedNash(self):
+  #def findMixedNash(self):
 
-  def findStrategies(self):
+  #def findStrategies(self):
 
 
-  def deleteDominated(self):
-      return deleted
+  #def deleteDominated(self):
+  #    return deleted
 
-  def bestResponse(self):
+  #def bestResponse(self):
