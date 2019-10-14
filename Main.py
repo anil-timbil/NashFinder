@@ -6,7 +6,8 @@ from Game import *
 
 def main():
 
-  new_Game = Game("game_instance_2.txt")
-  print(new_Game.findPureNash())
+  new_Game = Game("game_instance_3.txt")
+  #print(new_Game.findPureNash())
+  new_Game.findMixedNash()
 
 main()

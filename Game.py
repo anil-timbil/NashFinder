@@ -1,4 +1,7 @@
 from Node import *
+from sympy.solvers import solve
+from sympy import Symbol
+
 class Game():
   def __init__(self, txtfile):
     self.strictDominated = []
@@ -67,7 +70,38 @@ class Game():
         #print(self.matrix[num][num2].getP1(),self.matrix[num][num2].getP2(), self.matrix[num][num2].getSelectP1(), self.matrix[num][num2].getSelectP2())  
     return nash_list
 
-  #def findMixedNash(self):
+  def findMixedNash(self):
+    if self.numCol !=2 or self.numRow!=2:
+      print("Matrix is not a 2-by-2 matrix.")
+      return null
+    q = self.prob_calc(0)
+    p = self.prob_calc(1)
+    return q,p
+
+
+  def prob_calc(self, player_id):
+    if player_id == 0:
+      #fields = {'player':getP1}
+      payoff1 = int(self.matrix[0][0].getP1())
+      payoff2 = int(self.matrix[0][1].getP1())
+      payoff3 = int(self.matrix[1][0].getP1())
+      payoff4 = int(self.matrix[1][1].getP1())
+    else:
+      #fields = {'player':getP2}
+      payoff1 = int(self.matrix[0][0].getP2())
+      payoff2 = int(self.matrix[0][1].getP2())
+      payoff3 = int(self.matrix[1][0].getP2())
+      payoff4 = int(self.matrix[1][1].getP2())
+
+    #print(type(payoff1))
+
+    p = Symbol('p')
+    if player_id ==0:
+      probability = solve(payoff1*p + payoff2*(1-p) - (payoff3*p+payoff4*(1-p)), p)
+    else:
+      probability = solve(payoff1*p + payoff3*(1-p) - (payoff2*p+payoff4*(1-p)), p)
+    return probability
+
 
   #def findStrategies(self):
 
