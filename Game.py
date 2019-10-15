@@ -4,6 +4,7 @@
 from Node import *
 from sympy.solvers import solve
 from sympy import Symbol
+import numpy as np
 
 class Game():
   def __init__(self, txtfile):
@@ -106,10 +107,62 @@ class Game():
     return probability
 
 
-  #def findStrategies(self):
+  def findStrategies(self):
+
+    #player 1
+    select_num_row = []
+    for row in range(self.numRow):
+      counter = 0
+      for col in range(self.numCol):
+        if self.matrix[row][col].getSelectP1():
+          counter += 1
+      select_num_row.append(counter)
+
+    #player 2
+    select_num_col = []
+    for col in range(self.numCol):
+      counter = 0
+      for row in range(self.numRow):
+        if self.matrix[row][col].getSelectP2():
+          counter += 1
+      select_num_col.append(counter)
+
+    return select_num_row, select_num_col
+
+  def findDominated(self):
+    rows, columns = self.findStrategies()
+
+    arr_row = np.array(rows)
+    result_row = np.where(arr_row == 0)
+    print("Strictly dominated strategies found at the following row indices", result_row[0], sep='\n')
+
+    arr_col = np.array(columns)
+    result_col = np.where(arr_col == 0)
+    print("Strictly dominated strategies found at the following column indices", result_col[0], sep='\n')
+
+  def findDominant(self):
+    rows, columns = self.findStrategies()
+
+    arr_row = np.array(rows)
+    result_row = np.where(arr_row == self.numCol)
+    print("Strictly dominant strategies found at the following row indices", result_row[0], sep='\n')
+
+    arr_col = np.array(columns)
+    result_col = np.where(arr_col == self.numRow)
+    print("Strictly dominant strategies found at the following column indices", result_col[0], sep='\n')
 
 
-  #def deleteDominated(self):
-  #    return deleted
+if __name__ == '__main__':
+    new_Game = Game("game_instance_5.txt")
+    new_Game.findDominated()
 
-  #def bestResponse(self):
+
+
+
+
+
+
+
+
+
+
