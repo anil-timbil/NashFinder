@@ -1,11 +1,14 @@
 ## Main Program
 ## 10.10.2019
 ## Anil Timbil, Sean King
+## This program creates a menu we can use to utilize the functionalities described
+## in this project. The program takes an inputfile name and performs the indicated
+## functionality.
 
 from Game import *
 
 def main():
-    filename = input("Please input the name of the file that you want to test: ")
+    filename = input("Please input the name of the file that you want to test: ") #get inputfile
     new_Game = Game(filename)
     exit = False
     while not exit:
