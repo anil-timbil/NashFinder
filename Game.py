@@ -1,3 +1,6 @@
+## Game Class
+## 10.10.2019
+## Anil Timbil, Sean King
 from Node import *
 from sympy.solvers import solve
 from sympy import Symbol
@@ -66,8 +69,8 @@ class Game():
           p1 = self.matrix[num][num2].getP1()
           p2 = self.matrix[num][num2].getP2()
           nash_list.append([num, num2, p1, p2])
-        #Testing  
-        #print(self.matrix[num][num2].getP1(),self.matrix[num][num2].getP2(), self.matrix[num][num2].getSelectP1(), self.matrix[num][num2].getSelectP2())  
+        #Testing
+        #print(self.matrix[num][num2].getP1(),self.matrix[num][num2].getP2(), self.matrix[num][num2].getSelectP1(), self.matrix[num][num2].getSelectP2())
     return nash_list
 
   def findMixedNash(self):

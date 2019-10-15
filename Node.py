@@ -1,3 +1,7 @@
+##Node class
+## 10.10.2019
+## Anil Timbil, Sean King
+
 class Node():
   def __init__(self, values):
     #print(values.split(","))
