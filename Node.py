@@ -12,10 +12,10 @@ class Node():
     self.p2 = splitVal[1]
 
   def getP1(self):
-      return self.p1
+      return int(self.p1)
 
   def getP2(self):
-      return self.p2
+      return int(self.p2)
 
   def setSelectP1(self, answer):
       self.selectP1 = answer

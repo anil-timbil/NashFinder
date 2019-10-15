@@ -73,7 +73,7 @@ class Game():
   def findMixedNash(self):
     if self.numCol !=2 or self.numRow!=2:
       print("Matrix is not a 2-by-2 matrix.")
-      return null
+      return None, None
     q = self.prob_calc(0)
     p = self.prob_calc(1)
     return q,p
@@ -82,16 +82,16 @@ class Game():
   def prob_calc(self, player_id):
     if player_id == 0:
       #fields = {'player':getP1}
-      payoff1 = int(self.matrix[0][0].getP1())
-      payoff2 = int(self.matrix[0][1].getP1())
-      payoff3 = int(self.matrix[1][0].getP1())
-      payoff4 = int(self.matrix[1][1].getP1())
+      payoff1 = self.matrix[0][0].getP1()
+      payoff2 = self.matrix[0][1].getP1()
+      payoff3 = self.matrix[1][0].getP1()
+      payoff4 = self.matrix[1][1].getP1()
     else:
       #fields = {'player':getP2}
-      payoff1 = int(self.matrix[0][0].getP2())
-      payoff2 = int(self.matrix[0][1].getP2())
-      payoff3 = int(self.matrix[1][0].getP2())
-      payoff4 = int(self.matrix[1][1].getP2())
+      payoff1 = self.matrix[0][0].getP2()
+      payoff2 = self.matrix[0][1].getP2()
+      payoff3 = self.matrix[1][0].getP2()
+      payoff4 = self.matrix[1][1].getP2()
 
     #print(type(payoff1))
 
