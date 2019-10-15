@@ -154,7 +154,7 @@ class Game():
 
 if __name__ == '__main__':
     new_Game = Game("game_instance_5.txt")
-    new_Game.findDominated()
+    new_Game.findDominant()
 
 
 
