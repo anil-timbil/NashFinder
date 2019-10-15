@@ -22,7 +22,7 @@ def main():
         elif choice.lower() == "c":
             new_Game.findDominant()
         elif choice.lower() == "d":
-            new_game.findDominated()
+            new_Game.findDominated()
         elif choice.lower() == "exit":
             exit = True
 
