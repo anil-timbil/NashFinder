@@ -76,7 +76,9 @@ class Game():
         if self.matrix[num][num2].isNash():
           p1 = self.matrix[num][num2].getP1()
           p2 = self.matrix[num][num2].getP2()
-          nash_list.append([num, num2, p1, p2])
+          nash_list.append(["row index:",num, "column index:", num2, "P1:", p1, "P2:", p2])
+    if len(nash_list) == 0:
+      return "There is not any pure nash equilibria in this instance."
     return nash_list
 
   #Returns the mixed nash equilibrium for a 2-by-2 game.
@@ -138,11 +140,17 @@ class Game():
 
     arr_row = np.array(rows)
     result_row = np.where(arr_row == 0)
-    print("Strictly dominated strategies found at the following row indices", result_row[0], sep='\n')
+    if len(result_row[0]) == 0:
+      print("There are no strictly dominated strategies found in the row of this instance.")
+    else:
+      print("Strictly dominated strategies found at the following row indices", result_row[0], sep='\n')
 
     arr_col = np.array(columns)
     result_col = np.where(arr_col == 0)
-    print("Strictly dominated strategies found at the following column indices", result_col[0], sep='\n')
+    if len(result_col[0]) == 0:
+      print("There are no strictly dominated strategies found in the column of this instance.")
+    else:
+      print("Strictly dominated strategies found at the following column indices", result_col[0], sep='\n')
 
   #Prints a list of indexes of strategies that are strictly dominant.
   def findDominant(self):
@@ -150,11 +158,17 @@ class Game():
 
     arr_row = np.array(rows)
     result_row = np.where(arr_row == self.numCol)
-    print("Strictly dominant strategies found at the following row indices", result_row[0], sep='\n')
+    if len(result_row[0]) == 0:
+      print("There are no strictly dominant strategies found in the row of this instance.")
+    else:
+      print("Strictly dominant strategies found at the following row indices", result_row[0], sep='\n')
 
     arr_col = np.array(columns)
     result_col = np.where(arr_col == self.numRow)
-    print("Strictly dominant strategies found at the following column indices", result_col[0], sep='\n')
+    if len(result_col[0]) == 0:
+      print("There are no strictly dominant strategies found in the column of this instance.")
+    else:
+      print("Strictly dominant strategies found at the following column indices", result_col[0], sep='\n')
 
 # Used for testing the class
 if __name__ == '__main__':
